@@ -9,4 +9,4 @@ jobs:
       - run: |
           echo hello
         env:
-          MY_SECRET: ${{ steps.sets-a-secret.outputs.my-secret }}
+          MY_SECRET: '::add-mask::${{ steps.sets-a-secret.outputs.my-secret }}'
