@@ -1,0 +1,12 @@
+on: push
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - id: sets-a-secret
+        run: |
+          echo "::set-output name=my-secret::$((RANDOM))"
+      - run: |
+          echo hello
+        env:
+          MY_SECRET: ${{ steps.sets-a-secret.outputs.my-secret }}
